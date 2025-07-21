@@ -1,8 +1,9 @@
-# 🍩 The Simpsons API
+<div style="text-align: center;">
+    <img src="https://thesimpsonsapi.com/hero.webp" alt="The Simpsons Banner" width="300" />
+</div>
 
 Welcome to The Simpsons API, a comprehensive RESTful API that provides access to your favorite characters, episodes, and locations from the longest-running American sitcom, The Simpsons! This open-source project is built with modern technologies to deliver a fast, reliable, and well-documented API for developers and fans alike.
 
-![The Simpsons Banner](https://thesimpsonsapi.com/hero.webp)
 
 ## 🚀 Features
 
