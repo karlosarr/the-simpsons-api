@@ -30,7 +30,7 @@ export default async function Home() {
     <div className='bg-sky-50 divide-y'>
       <Header />
       <Hero />
-      <ApiOverview characters={characters} />
+      <ApiOverview characters={characters} episodes={episodes} locations={locations} />
       <Documentation characters={characters} episodes={episodes} locations={locations} />
       <Footer />
     </div>

@@ -1,9 +1,19 @@
 import { Users, MapPin, Film } from 'lucide-react'
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/components/ui/card'
-import { CharacterPagination } from '../types/api-the-simpsons/character'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { CharacterPagination } from '@/types/api-the-simpsons/character'
+import { EpisodePagination } from '@/types/api-the-simpsons/episode'
+import { LocationPagination } from '@/types/api-the-simpsons/location'
 
-export function ApiOverview({ characters }: { characters: CharacterPagination }) {
+export function ApiOverview({
+  characters,
+  episodes,
+  locations
+}: {
+  characters: CharacterPagination
+  episodes: EpisodePagination
+  locations: LocationPagination
+}) {
   return (
     <section className='py-16'>
       <div className='container mx-auto px-4'>
@@ -33,7 +43,7 @@ export function ApiOverview({ characters }: { characters: CharacterPagination })
             <CardHeader>
               <Film className='h-8 w-8 mb-2' />
               <CardTitle>Episodes</CardTitle>
-              <CardDescription>{characters.count}+ episodes documented</CardDescription>
+              <CardDescription>{episodes.count}+ episodes documented</CardDescription>
             </CardHeader>
             <CardContent>
               <p className='text-sm text-gray-600'>
@@ -46,7 +56,7 @@ export function ApiOverview({ characters }: { characters: CharacterPagination })
             <CardHeader>
               <MapPin className='h-8 w-8 mb-2' />
               <CardTitle>Locations</CardTitle>
-              <CardDescription>{characters.count}+ locations in Springfield</CardDescription>
+              <CardDescription>{locations.count}+ locations in Springfield</CardDescription>
             </CardHeader>
             <CardContent>
               <p className='text-sm text-gray-600'>
