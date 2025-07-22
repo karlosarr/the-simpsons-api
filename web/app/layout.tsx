@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Ubuntu } from 'next/font/google'
+import Script from 'next/script'
 
 import './globals.css'
 
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={ubuntu.className}>{children}</body>
+      <Script src='https://cloud.umami.is/script.js' data-website-id='a8de3e62-e698-4ac0-84ab-fad69aaeb376' defer />
     </html>
   )
 }
