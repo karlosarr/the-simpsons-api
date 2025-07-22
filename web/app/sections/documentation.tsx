@@ -8,6 +8,7 @@ import { EpisodePagination } from '@/types/api-the-simpsons/episode'
 import { LocationPagination } from '@/types/api-the-simpsons/location'
 import { ApiUrlDisplay } from '@/components/api-url-display'
 import { ExampleUrlDisplay } from '@/components/example-url-display'
+import { JsonDisplay } from '@/components/json-display'
 
 export function Documentation({
   characters,
@@ -48,13 +49,7 @@ export function Documentation({
                   <ApiUrlDisplay url='https://thesimpsonsapi.com/api/character' />
                   <div className='mt-4'>
                     <h4 className='font-semibold mb-2'>Response Example:</h4>
-                    <div className='bg-gray-50 p-4 rounded-lg overflow-x-auto'>
-                      <pre className='text-sm'>
-                        <code>
-                          {JSON.stringify({ ...characters, results: characters.results.slice(0, 1) }, null, 2)}
-                        </code>
-                      </pre>
-                    </div>
+                    <JsonDisplay data={{ ...characters, results: characters.results.slice(0, 1) }} />
                   </div>
                 </CardContent>
               </Card>
@@ -86,11 +81,7 @@ export function Documentation({
                   <ApiUrlDisplay url='https://thesimpsonsapi.com/api/episode' />
                   <div className='mt-4'>
                     <h4 className='font-semibold mb-2'>Response Example:</h4>
-                    <div className='bg-gray-50 p-4 rounded-lg overflow-x-auto'>
-                      <pre className='text-sm'>
-                        <code>{JSON.stringify({ ...episodes, results: episodes.results.slice(0, 1) }, null, 2)}</code>
-                      </pre>
-                    </div>
+                    <JsonDisplay data={{ ...episodes, results: episodes.results.slice(0, 1) }} />
                   </div>
                 </CardContent>
               </Card>
@@ -122,11 +113,7 @@ export function Documentation({
                   <ApiUrlDisplay url='https://thesimpsonsapi.com/api/location' />
                   <div className='mt-4'>
                     <h4 className='font-semibold mb-2'>Response Example:</h4>
-                    <div className='bg-gray-50 p-4 rounded-lg overflow-x-auto'>
-                      <pre className='text-sm'>
-                        <code>{JSON.stringify({ ...locations, results: locations.results.slice(0, 1) }, null, 2)}</code>
-                      </pre>
-                    </div>
+                    <JsonDisplay data={{ ...locations, results: locations.results.slice(0, 1) }} />
                   </div>
                 </CardContent>
               </Card>
