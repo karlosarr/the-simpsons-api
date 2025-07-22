@@ -1,9 +1,10 @@
 import Image from 'next/image'
 
-import { Badge } from '@/app/components/ui/badge'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { CharacterPagination } from '@/types/api-the-simpsons/character'
 
-export function PopularCharacters() {
+export function PopularCharacters({ characters }: { characters: CharacterPagination }) {
   return (
     <section id='example' className='py-16 '>
       <div className='container mx-auto px-4'>
@@ -13,72 +14,47 @@ export function PopularCharacters() {
         </div>
 
         <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto'>
-          {[
-            {
-              id: 1,
-              name: 'Homer Simpson',
-              age: 39,
-              occupation: 'Safety Inspector',
-              status: 'Alive',
-              portrait_path: '/character/1.webp',
-              phrases: ['Doh!', 'Woo-hoo!', 'Mmm... beer...']
-            },
-            {
-              id: 2,
-              name: 'Marge Simpson',
-              age: 39,
-              occupation: 'Unemployed',
-              status: 'Alive',
-              portrait_path: '/character/2.webp',
-              phrases: ['Hrmmm...', 'Oh, Homie!', "Now it's Marge's time to shine!"]
-            },
-            {
-              id: 3,
-              name: 'Bart Simpson',
-              age: 10,
-              occupation: 'Student at Springfield Elementary School',
-              status: 'Alive',
-              portrait_path: '/character/3.webp',
-              phrases: ['¡Ay Caramba!', 'Eat my shorts!', "Don't have a cow, man."]
-            },
-            {
-              id: 4,
-              name: 'Lisa Simpson',
-              age: 8,
-              occupation: 'Student at Springfield Elementary School',
-              status: 'Alive',
-              portrait_path: '/character/4.webp',
-              phrases: ['Bart!', "If anyone wants me, I'll be in my room.", 'The truth must be told.']
-            }
-          ].map((character) => (
-            <Card key={character.id} className='text-center'>
+          {characters.results.map(({ id, name, portrait_path, age, status, phrases, occupation }) => (
+            <Card key={id} className='text-center'>
               <CardHeader className='pb-2'>
                 <div className='mx-auto mb-4 relative'>
                   <div className='w-32 h-32 mx-auto rounded-lg overflow-hidden shadow-lg'>
                     <Image
-                      src={`https://cdn.thesimpsonsapi.com/500${character.portrait_path}`}
-                      alt={character.name}
+                      src={`https://cdn.thesimpsonsapi.com/500${portrait_path}`}
+                      alt={name}
                       width={128}
                       height={128}
                       className='w-full h-full object-cover'
                     />
                   </div>
                 </div>
-                <CardTitle className='text-lg font-bold '>{character.name}</CardTitle>
-                <CardDescription className='text-sm text-gray-600 min-h-[2.5rem] flex items-center justify-center'>
-                  {character.occupation}
+                <CardTitle className='text-lg font-bold text-ellipsis overflow-hidden whitespace-nowrap'>
+                  {name}
+                </CardTitle>
+                <CardDescription className='text-sm text-gray-600 min-h-[2.5rem] flex items-center justify-center line-clamp-2'>
+                  {occupation}
                 </CardDescription>
               </CardHeader>
               <CardContent className='pt-0 space-y-2'>
                 <div className='flex justify-center gap-2'>
-                  <Badge variant='outline' className='text-xs'>
-                    Age: {character.age}
-                  </Badge>
-                  <Badge variant='outline' className='text-xs bg-green-50 text-green-700'>
-                    {character.status}
-                  </Badge>
+                  {!!age && (
+                    <Badge variant='outline' className='text-xs'>
+                      Age: {age}
+                    </Badge>
+                  )}
+                  {status === 'Alive' ? (
+                    <Badge variant='outline' className='text-xs bg-green-50 text-green-700'>
+                      {status}
+                    </Badge>
+                  ) : (
+                    <Badge variant='outline' className='text-xs bg-red-50 text-red-700'>
+                      {status}
+                    </Badge>
+                  )}
                 </div>
-                <div className='text-xs text-gray-500 italic'>"{character.phrases[0]}"</div>
+                {phrases.length > 0 && (
+                  <div className='text-xs text-gray-500 italic'>"{phrases.find((phrase) => phrase.length < 50)}"</div>
+                )}
               </CardContent>
             </Card>
           ))}

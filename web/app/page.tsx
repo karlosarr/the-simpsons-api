@@ -6,6 +6,7 @@ import { Footer } from '@/sections/footer'
 import { getCharacters } from '@/services/characters'
 import { getEpisodes } from '@/services/episodes'
 import { getLocations } from '@/services/locations'
+import { PopularCharacters } from '@/sections/popular-characters'
 
 export default async function Home() {
   const [[charactersError, characters], [episodesError, episodes], [locationsError, locations]] = await Promise.all([
@@ -32,6 +33,7 @@ export default async function Home() {
       <Hero />
       <ApiOverview characters={characters} episodes={episodes} locations={locations} />
       <Documentation characters={characters} episodes={episodes} locations={locations} />
+      <PopularCharacters characters={characters} />
       <Footer />
     </div>
   )
