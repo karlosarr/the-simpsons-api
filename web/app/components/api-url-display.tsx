@@ -14,12 +14,12 @@ export function ApiUrlDisplay({ url, showButtons = true }: ApiUrlDisplayProps) {
 
   return (
     <div className='bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto'>
-      <div className='flex items-center justify-between gap-4'>
-        <pre className='flex-1 min-w-0'>
-          <code>{url}</code>
+      <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3'>
+        <pre className='flex-1 min-w-0 overflow-x-auto'>
+          <code className='text-sm'>{url}</code>
         </pre>
         {showButtons && (
-          <div className='flex gap-2 flex-shrink-0'>
+          <div className='flex gap-2 flex-shrink-0 self-end sm:self-auto'>
             <Button
               size='sm'
               variant='ghost'

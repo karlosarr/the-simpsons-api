@@ -7,11 +7,11 @@ export function Footer() {
     <footer className=' py-12'>
       <div className='container mx-auto px-4'>
         <div className='text-center'>
-          <div className='flex items-center justify-center  mb-4'>
+          <div className='flex items-center justify-center mb-4'>
             <Image src='/logo.webp' alt='The Simpsons API Logo' width={200} height={24} />
           </div>
           <p className='text-gray-600 mb-6'>The RESTful API for The Simpsons universe</p>
-          <div className='flex justify-center space-x-6'>
+          <div className='flex justify-center gap-x-6 gap-y-2 flex-wrap'>
             <Link href='https://thesimpsonsapi.com/api' target='_blank' className='text-gray-700 hover:text-gray-400'>
               API Endpoint
             </Link>
