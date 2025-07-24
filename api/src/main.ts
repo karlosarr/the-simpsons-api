@@ -15,7 +15,9 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ transform: true }))
   app.setGlobalPrefix('api')
   await app.register(helmet, {
-    contentSecurityPolicy: false
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false,
+    crossOriginOpenerPolicy: false
   })
   const configService = app.get(ConfigService)
   const port = configService.get<string>('PORT', '3000')
