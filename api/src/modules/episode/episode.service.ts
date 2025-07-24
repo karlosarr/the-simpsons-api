@@ -51,8 +51,8 @@ export class EpisodeService {
 
     return {
       count,
-      next: page < Math.ceil(count / 20) ? `${APP_URL}/episode?page=${page + 1}` : null,
-      prev: page > 1 ? `${APP_URL}/episode?page=${page - 1}` : null,
+      next: page < Math.ceil(count / 20) ? `${APP_URL}/episodes?page=${page + 1}` : null,
+      prev: page > 1 ? `${APP_URL}/episodes?page=${page - 1}` : null,
       pages: Math.ceil(count / 20),
       results
     }

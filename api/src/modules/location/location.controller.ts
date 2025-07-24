@@ -19,7 +19,7 @@ import { IsPageDto } from '@/src/common/dto/pagination.dto'
 import { PaginationResponse } from '@/src/common/interfaces/pagination-response.interface'
 import { ApiKeyGuard } from '@/src/common/guards/api-key.guard'
 
-@Controller('location')
+@Controller('locations')
 export class LocationController {
   constructor(private readonly locationService: LocationService) {}
 

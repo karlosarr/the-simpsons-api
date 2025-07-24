@@ -8,6 +8,7 @@ import { EpisodePagination } from '@/types/api-the-simpsons/episode'
 import { LocationPagination } from '@/types/api-the-simpsons/location'
 import { ApiUrlDisplay } from '@/components/api-url-display'
 import { ExampleUrlDisplay } from '@/components/example-url-display'
+import { JsonDisplay } from '@/components/json-display'
 
 export function Documentation({
   characters,
@@ -40,21 +41,15 @@ export function Documentation({
                 <CardHeader>
                   <CardTitle className='flex items-center gap-2'>
                     <Badge variant='secondary'>GET</Badge>
-                    /api/character
+                    /api/characters
                   </CardTitle>
                   <CardDescription>Get all characters (limited to 20 by default)</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ApiUrlDisplay url='https://thesimpsonsapi.com/api/character' />
+                  <ApiUrlDisplay url='https://thesimpsonsapi.com/api/characters' />
                   <div className='mt-4'>
                     <h4 className='font-semibold mb-2'>Response Example:</h4>
-                    <div className='bg-gray-50 p-4 rounded-lg overflow-x-auto'>
-                      <pre className='text-sm'>
-                        <code>
-                          {JSON.stringify({ ...characters, results: characters.results.slice(0, 1) }, null, 2)}
-                        </code>
-                      </pre>
-                    </div>
+                    <JsonDisplay data={{ ...characters, results: characters.results.slice(0, 1) }} />
                   </div>
                 </CardContent>
               </Card>
@@ -63,12 +58,12 @@ export function Documentation({
                 <CardHeader>
                   <CardTitle className='flex items-center gap-2'>
                     <Badge variant='secondary'>GET</Badge>
-                    /api/character/:id
+                    /api/characters/:id
                   </CardTitle>
                   <CardDescription>Get character by ID</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ApiUrlDisplay url='https://thesimpsonsapi.com/api/character/1' />
+                  <ApiUrlDisplay url='https://thesimpsonsapi.com/api/characters/1' />
                 </CardContent>
               </Card>
             </TabsContent>
@@ -78,19 +73,15 @@ export function Documentation({
                 <CardHeader>
                   <CardTitle className='flex items-center gap-2'>
                     <Badge variant='secondary'>GET</Badge>
-                    /api/episode
+                    /api/episodes
                   </CardTitle>
                   <CardDescription>Get all episodes (limited to 20 by default)</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ApiUrlDisplay url='https://thesimpsonsapi.com/api/episode' />
+                  <ApiUrlDisplay url='https://thesimpsonsapi.com/api/episodes' />
                   <div className='mt-4'>
                     <h4 className='font-semibold mb-2'>Response Example:</h4>
-                    <div className='bg-gray-50 p-4 rounded-lg overflow-x-auto'>
-                      <pre className='text-sm'>
-                        <code>{JSON.stringify({ ...episodes, results: episodes.results.slice(0, 1) }, null, 2)}</code>
-                      </pre>
-                    </div>
+                    <JsonDisplay data={{ ...episodes, results: episodes.results.slice(0, 1) }} />
                   </div>
                 </CardContent>
               </Card>
@@ -99,12 +90,12 @@ export function Documentation({
                 <CardHeader>
                   <CardTitle className='flex items-center gap-2'>
                     <Badge variant='secondary'>GET</Badge>
-                    /api/episode/:id
+                    /api/episodes/:id
                   </CardTitle>
-                  <CardDescription>Get episode by ID</CardDescription>
+                  <CardDescription>Get episodes by ID</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ApiUrlDisplay url='https://thesimpsonsapi.com/api/episode/1' />
+                  <ApiUrlDisplay url='https://thesimpsonsapi.com/api/episodes/1' />
                 </CardContent>
               </Card>
             </TabsContent>
@@ -114,19 +105,15 @@ export function Documentation({
                 <CardHeader>
                   <CardTitle className='flex items-center gap-2'>
                     <Badge variant='secondary'>GET</Badge>
-                    /api/location
+                    /api/locations
                   </CardTitle>
                   <CardDescription>Get all locations (limited to 20 by default)</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ApiUrlDisplay url='https://thesimpsonsapi.com/api/location' />
+                  <ApiUrlDisplay url='https://thesimpsonsapi.com/api/locations' />
                   <div className='mt-4'>
                     <h4 className='font-semibold mb-2'>Response Example:</h4>
-                    <div className='bg-gray-50 p-4 rounded-lg overflow-x-auto'>
-                      <pre className='text-sm'>
-                        <code>{JSON.stringify({ ...locations, results: locations.results.slice(0, 1) }, null, 2)}</code>
-                      </pre>
-                    </div>
+                    <JsonDisplay data={{ ...locations, results: locations.results.slice(0, 1) }} />
                   </div>
                 </CardContent>
               </Card>
@@ -135,12 +122,12 @@ export function Documentation({
                 <CardHeader>
                   <CardTitle className='flex items-center gap-2'>
                     <Badge variant='secondary'>GET</Badge>
-                    /api/location/:id
+                    /api/locations/:id
                   </CardTitle>
-                  <CardDescription>Get location by ID</CardDescription>
+                  <CardDescription>Get locations by ID</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ApiUrlDisplay url='https://thesimpsonsapi.com/api/location/1' />
+                  <ApiUrlDisplay url='https://thesimpsonsapi.com/api/locations/1' />
                 </CardContent>
               </Card>
             </TabsContent>

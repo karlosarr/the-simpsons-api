@@ -88,8 +88,8 @@ export class CharacterService {
 
     return {
       count,
-      next: page < Math.ceil(count / 20) ? `${APP_URL}/character?page=${page + 1}` : null,
-      prev: page > 1 ? `${APP_URL}/character?page=${page - 1}` : null,
+      next: page < Math.ceil(count / 20) ? `${APP_URL}/characters?page=${page + 1}` : null,
+      prev: page > 1 ? `${APP_URL}/characters?page=${page - 1}` : null,
       pages: Math.ceil(count / 20),
       results
     }

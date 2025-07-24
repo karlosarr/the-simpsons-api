@@ -18,10 +18,12 @@
     "next": "15.2.4",
     "react": "19",
     "react-dom": "19",
+    "react-syntax-highlighter": "^15.6.1",
     "tailwind-merge": "2.5.5",
     "tailwindcss-animate": "1.0.7"
   },
   "devDependencies": {
+    "@types/react-syntax-highlighter": "15.5.13",
     "@types/node": "22",
     "@types/react": "19",
     "@types/react-dom": "19",

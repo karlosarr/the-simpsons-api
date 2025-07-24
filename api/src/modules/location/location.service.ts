@@ -59,8 +59,8 @@ export class LocationService {
 
     return {
       count,
-      next: page < Math.ceil(count / 20) ? `${APP_URL}/location?page=${page + 1}` : null,
-      prev: page > 1 ? `${APP_URL}/location?page=${page - 1}` : null,
+      next: page < Math.ceil(count / 20) ? `${APP_URL}/locations?page=${page + 1}` : null,
+      prev: page > 1 ? `${APP_URL}/locations?page=${page - 1}` : null,
       pages: Math.ceil(count / 20),
       results
     }

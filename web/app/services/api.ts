@@ -4,15 +4,15 @@ export type ApiResponse<Response> = [null, Response] | [Error, null]
 
 export const apis = {
   character: {
-    paginated: `${baseUrl}/character`,
-    detail: `${baseUrl}/character/`
+    paginated: `${baseUrl}/characters`,
+    detail: `${baseUrl}/characters/`
   },
   episode: {
-    paginated: `${baseUrl}/episode`,
-    detail: `${baseUrl}/episode/`
+    paginated: `${baseUrl}/episodes`,
+    detail: `${baseUrl}/episodes/`
   },
   location: {
-    paginated: `${baseUrl}/location`,
-    detail: `${baseUrl}/location/`
+    paginated: `${baseUrl}/locations`,
+    detail: `${baseUrl}/locations/`
   }
 }

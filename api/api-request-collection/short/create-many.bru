@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: {{URL}}/short
+  url: {{URL}}/shorts
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{API_KEY}}
 }
 
 body:json {

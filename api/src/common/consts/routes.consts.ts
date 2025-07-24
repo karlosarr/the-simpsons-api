@@ -1,1 +1,1 @@
-export const ROUTES = ['character', 'episode', 'location'] as const
+export const ROUTES = ['characters', 'episodes', 'locations'] as const

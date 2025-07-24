@@ -41,10 +41,10 @@ describe('App', () => {
     })
   })
 
-  describe('/character', () => {
+  describe('/characters', () => {
     describe('GET', () => {
       it('should return the correct body', async () => {
-        const response = await request(app.getHttpServer()).get('/character')
+        const response = await request(app.getHttpServer()).get('/characters')
         const body = response.body as PaginationResponse<Character[]>
 
         expect(response.status).toBe(200)
@@ -56,7 +56,7 @@ describe('App', () => {
 
       it('should return 200 with a query', async () => {
         const page = 2
-        const response = await request(app.getHttpServer()).get(`/character?page=${page}`)
+        const response = await request(app.getHttpServer()).get(`/characters?page=${page}`)
         const body = response.body as PaginationResponse<Character[]>
 
         expect(response.status).toBe(200)
@@ -66,7 +66,7 @@ describe('App', () => {
       })
 
       it('should return page 1 with a bad query', async () => {
-        const response = await request(app.getHttpServer()).get('/character?page=test')
+        const response = await request(app.getHttpServer()).get('/characters?page=test')
         const body = response.body as PaginationResponse<Character[]>
 
         expect(response.status).toBe(200)
@@ -78,7 +78,7 @@ describe('App', () => {
 
     describe('GET/:id', () => {
       it('should return the correct body', async () => {
-        const response = await request(app.getHttpServer()).get('/character/1')
+        const response = await request(app.getHttpServer()).get('/characters/1')
         const body = response.body as Character
 
         expect(response.status).toBe(200)
@@ -86,13 +86,13 @@ describe('App', () => {
       })
 
       it('should return 404 if id does not exist', async () => {
-        const response = await request(app.getHttpServer()).get('/character/0')
+        const response = await request(app.getHttpServer()).get('/characters/0')
 
         expect(response.status).toBe(404)
       })
 
       it('should return 400 if id is not a number', async () => {
-        const response = await request(app.getHttpServer()).get('/character/test')
+        const response = await request(app.getHttpServer()).get('/characters/test')
 
         expect(response.status).toBe(400)
       })
@@ -100,24 +100,24 @@ describe('App', () => {
 
     describe('POST', () => {
       it('should return an error if api key is missing', async () => {
-        const response = await request(app.getHttpServer()).post('/character')
+        const response = await request(app.getHttpServer()).post('/characters')
 
         expect(response.status).toBe(401)
       })
 
       it('should return an error if api key is invalid', async () => {
-        const response = await request(app.getHttpServer()).post('/character').set('Authorization', 'Bearer 123')
+        const response = await request(app.getHttpServer()).post('/characters').set('Authorization', 'Bearer 123')
 
         expect(response.status).toBe(401)
       })
     })
   })
 
-  describe('/location', () => {
+  describe('/locations', () => {
     describe('GET', () => {
       it('should return the correct body', async () => {
-        const response = await request(app.getHttpServer()).get('/location')
-        const body = response.body as PaginationResponse<Character[]>
+        const response = await request(app.getHttpServer()).get('/locations')
+        const body = response.body as PaginationResponse<Location[]>
 
         expect(response.status).toBe(200)
         expect(body.results.length).toBeGreaterThan(0)
@@ -128,8 +128,8 @@ describe('App', () => {
 
       it('should return 200 with a query', async () => {
         const page = 2
-        const response = await request(app.getHttpServer()).get(`/location?page=${page}`)
-        const body = response.body as PaginationResponse<Character[]>
+        const response = await request(app.getHttpServer()).get(`/locations?page=${page}`)
+        const body = response.body as PaginationResponse<Location[]>
 
         expect(response.status).toBe(200)
         expect(body.results.length).toBeGreaterThan(0)
@@ -138,8 +138,8 @@ describe('App', () => {
       })
 
       it('should return page 1 with a bad query', async () => {
-        const response = await request(app.getHttpServer()).get('/location?page=test')
-        const body = response.body as PaginationResponse<Character[]>
+        const response = await request(app.getHttpServer()).get('/locations?page=test')
+        const body = response.body as PaginationResponse<Location[]>
 
         expect(response.status).toBe(200)
         expect(body.prev).toBeNull()
@@ -150,21 +150,21 @@ describe('App', () => {
 
     describe('GET/:id', () => {
       it('should return the correct body', async () => {
-        const response = await request(app.getHttpServer()).get('/location/1')
-        const body = response.body as Character
+        const response = await request(app.getHttpServer()).get('/locations/1')
+        const body = response.body as Location
 
         expect(response.status).toBe(200)
         expect(body).toHaveProperty('id')
       })
 
       it('should return 404 if id does not exist', async () => {
-        const response = await request(app.getHttpServer()).get('/location/0')
+        const response = await request(app.getHttpServer()).get('/locations/0')
 
         expect(response.status).toBe(404)
       })
 
       it('should return 400 if id is not a number', async () => {
-        const response = await request(app.getHttpServer()).get('/location/test')
+        const response = await request(app.getHttpServer()).get('/locations/test')
 
         expect(response.status).toBe(400)
       })
@@ -172,23 +172,23 @@ describe('App', () => {
 
     describe('POST', () => {
       it('should return an error if api key is missing', async () => {
-        const response = await request(app.getHttpServer()).post('/location')
+        const response = await request(app.getHttpServer()).post('/locations')
 
         expect(response.status).toBe(401)
       })
 
       it('should return an error if api key is invalid', async () => {
-        const response = await request(app.getHttpServer()).post('/location').set('Authorization', 'Bearer 123')
+        const response = await request(app.getHttpServer()).post('/locations').set('Authorization', 'Bearer 123')
 
         expect(response.status).toBe(401)
       })
     })
   })
 
-  describe('/episode', () => {
+  describe('/episodes', () => {
     describe('GET', () => {
       it('should return the correct body', async () => {
-        const response = await request(app.getHttpServer()).get('/episode')
+        const response = await request(app.getHttpServer()).get('/episodes')
         const body = response.body as PaginationResponse<Character[]>
 
         expect(response.status).toBe(200)
@@ -200,7 +200,7 @@ describe('App', () => {
 
       it('should return 200 with a query', async () => {
         const page = 2
-        const response = await request(app.getHttpServer()).get(`/episode?page=${page}`)
+        const response = await request(app.getHttpServer()).get(`/episodes?page=${page}`)
         const body = response.body as PaginationResponse<Character[]>
 
         expect(response.status).toBe(200)
@@ -210,7 +210,7 @@ describe('App', () => {
       })
 
       it('should return page 1 with a bad query', async () => {
-        const response = await request(app.getHttpServer()).get('/episode?page=test')
+        const response = await request(app.getHttpServer()).get('/episodes?page=test')
         const body = response.body as PaginationResponse<Character[]>
 
         expect(response.status).toBe(200)
@@ -222,7 +222,7 @@ describe('App', () => {
 
     describe('GET/:id', () => {
       it('should return the correct body', async () => {
-        const response = await request(app.getHttpServer()).get('/episode/1')
+        const response = await request(app.getHttpServer()).get('/episodes/1')
         const body = response.body as Character
 
         expect(response.status).toBe(200)
@@ -230,13 +230,13 @@ describe('App', () => {
       })
 
       it('should return 404 if id does not exist', async () => {
-        const response = await request(app.getHttpServer()).get('/episode/0')
+        const response = await request(app.getHttpServer()).get('/episodes/0')
 
         expect(response.status).toBe(404)
       })
 
       it('should return 400 if id is not a number', async () => {
-        const response = await request(app.getHttpServer()).get('/episode/test')
+        const response = await request(app.getHttpServer()).get('/episodes/test')
 
         expect(response.status).toBe(400)
       })
@@ -244,13 +244,13 @@ describe('App', () => {
 
     describe('POST', () => {
       it('should return an error if api key is missing', async () => {
-        const response = await request(app.getHttpServer()).post('/episode')
+        const response = await request(app.getHttpServer()).post('/episodes')
 
         expect(response.status).toBe(401)
       })
 
       it('should return an error if api key is invalid', async () => {
-        const response = await request(app.getHttpServer()).post('/episode').set('Authorization', 'Bearer 123')
+        const response = await request(app.getHttpServer()).post('/episodes').set('Authorization', 'Bearer 123')
 
         expect(response.status).toBe(401)
       })

@@ -2,89 +2,69 @@
     <img src="https://thesimpsonsapi.com/hero.webp" alt="The Simpsons Banner" width="300" />
 </div>
 
-Welcome to The Simpsons API, a comprehensive RESTful API that provides access to your favorite characters, episodes, and locations from the longest-running American sitcom, The Simpsons! This open-source project is built with modern technologies to deliver a fast, reliable, and well-documented API for developers and fans alike.
+# 🍩 The Simpsons API
 
+RESTful API for The Simpsons data. Built with NestJS, Prisma, and PostgreSQL.
 
-## 🚀 Features
-
-- **Character Information**: Get details about your favorite characters from Springfield
-- **Episode Guide**: Access information about all episodes across all seasons
-- **Locations**: Explore various locations in Springfield
-- **Fast & Efficient**: Built with NestJS and Fastify for optimal performance
-- **Type-Safe**: Full TypeScript support
-- **Comprehensive Testing**: Unit and E2E test coverage
-- **Docker Support**: Easy deployment with Docker
-- **RESTful API**: Follows REST principles for easy integration
-
-## 🛠️ Technologies
-
-- **Backend Framework**: [NestJS](https://nestjs.com/)
-- **Runtime**: Node.js (v18+)
-- **Database**: [Prisma](https://www.prisma.io/) with PostgreSQL
-- **Testing**: [Vitest](https://vitest.dev/)
-- **Containerization**: [Docker](https://www.docker.com/)
-- **Package Manager**: npm (v9+)
-
-## 📋 Prerequisites
-
-- Node.js v18 or higher
-- npm v9 or higher
-- Docker (optional, for containerized development)
-- PostgreSQL (can be run via Docker)
-
-## 🚀 Getting Started
-
-### 1. Clone the Repository
+## 🚀 Quick Start
 
 ```bash
+# 1. Install & start
 git clone https://github.com/Facug03/the-simpsons-api.git
 cd the-simpsons-api
-```
-
-### 2. Install Dependencies
-
-```bash
 npm install
-```
-
-### 3. Set Up Environment Variables
-
-Copy the example environment file and update the values as needed:
-
-```bash
-cp .env.example .env
-```
-
-Edit the `.env` file with your database credentials and other configurations.
-
-### 4. Database Setup
-
-#### Option A: Using Docker (Recommended)
-
-```bash
-docker-compose up -d
-```
-
-#### Option B: Local PostgreSQL
-
-Make sure you have PostgreSQL installed and running, then update the database connection string in your `.env` file.
-
-### 5. Run Database Migrations
-
-```bash
-npx prisma migrate dev
-```
-
-### 6. Start the Development Server
-
-```bash
-# Development mode with hot-reload
+docker compose up -d
+npx prisma migrate reset --force
 npm run dev
-
-# Or build and start in production mode
-npm run build
-npm run start
 ```
+
+## 📊 Fill Database
+
+### Method 1: Bruno Collection (Recommended)
+
+Use the included `api-request-collection`:
+
+1. **Open Bruno**: Open the `api-request-collection` folder
+2. **Execution order**:
+   ```
+   1. POST /episodes    → Create episodes
+   2. POST /shorts      → Create shorts
+   3. POST /locations   → Create locations
+   4. POST /characters  → Create characters
+   ```
+3. **Run in order**: Each request has required data
+
+### Method 2: Manual with curl
+
+```bash
+# Create episodes
+curl -X POST http://localhost:3000/episodes \
+  -H "Authorization: Bearer your-api-key" \
+  -d @api-request-collection/episodes.json
+
+# Create characters (references valid episodes)
+curl -X POST http://localhost:3000/characters \
+  -H "Authorization: Bearer your-api-key" \
+  -d @api-request-collection/characters.json
+```
+
+## 🔧 Useful Commands
+
+```bash
+# Reset database
+npx prisma migrate reset --force
+
+# Check data
+psql postgresql://user:password@localhost:5432/user -c "SELECT COUNT(*) FROM \"Character\";"
+
+# Run tests
+npm run test:e2e
+```
+
+## 📚 Documentation
+
+- **API Documentation**: https://thesimpsonsapi.com/
+- **Bruno Collection**: `api-request-collection/`
 
 ## 📚 Data Attribution
 

@@ -6,7 +6,7 @@ import { createShortsSchema } from './dto/create-short.dto'
 import { ZodValidationPipe } from '@/src/common/pipes/zod-validation.pipe'
 import { ApiKeyGuard } from '@/src/common/guards/api-key.guard'
 
-@Controller('short')
+@Controller('shorts')
 export class ShortController {
   constructor(private readonly episodeService: ShortService) {}
 
