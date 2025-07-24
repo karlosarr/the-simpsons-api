@@ -13,7 +13,7 @@ async function bootstrap() {
     origin: '*',
     preflightContinue: false,
     optionsSuccessStatus: 200,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    methods: ['GET', 'HEAD', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
   })
   app.useGlobalPipes(new ValidationPipe({ transform: true }))
@@ -21,7 +21,8 @@ async function bootstrap() {
   await app.register(helmet, {
     contentSecurityPolicy: false,
     crossOriginResourcePolicy: false,
-    crossOriginOpenerPolicy: false
+    crossOriginOpenerPolicy: false,
+    crossOriginEmbedderPolicy: false
   })
   const configService = app.get(ConfigService)
   const port = configService.get<string>('PORT', '3000')
