@@ -41,22 +41,22 @@ export async function Documentation({
         <div className='max-w-6xl mx-auto'>
           <Tabs defaultValue='getting-started' className='w-full'>
             <TabsList className='flex flex-wrap justify-evenly gap-2 w-full h-auto p-2'>
-              <TabsTrigger value='getting-started' className='flex-1'>
+              <TabsTrigger value='getting-started' className='flex-1' data-umami-event='Documentation getting-started'>
                 Getting Started
               </TabsTrigger>
-              <TabsTrigger value='characters' className='flex-1'>
+              <TabsTrigger value='characters' className='flex-1' data-umami-event='Documentation characters'>
                 Characters
               </TabsTrigger>
-              <TabsTrigger value='episodes' className='flex-1'>
+              <TabsTrigger value='episodes' className='flex-1' data-umami-event='Documentation episodes'>
                 Episodes
               </TabsTrigger>
-              <TabsTrigger value='locations' className='flex-1'>
+              <TabsTrigger value='locations' className='flex-1' data-umami-event='Documentation locations'>
                 Locations
               </TabsTrigger>
-              <TabsTrigger value='pagination' className='flex-1'>
+              <TabsTrigger value='pagination' className='flex-1' data-umami-event='Documentation pagination'>
                 Pagination
               </TabsTrigger>
-              <TabsTrigger value='images' className='flex-1'>
+              <TabsTrigger value='images' className='flex-1' data-umami-event='Documentation images'>
                 Images
               </TabsTrigger>
             </TabsList>

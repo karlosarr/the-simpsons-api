@@ -7,14 +7,19 @@ import { baseUrl } from '@/services/api'
 
 export function Hero() {
   return (
-    <section
-      className='py-20 text-center'
-      style={{ backgroundImage: 'url(/clouds-bg.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}
-    >
-      <div className='container mx-auto px-4'>
-        <div className='max-w-4xl mx-auto'>
+    <section className='py-20 text-center relative'>
+      <Image src='/clouds-bg.jpg' alt='The Simpsons API Background' fill priority className='object-cover' />
+      <div className='container mx-auto px-4 z-10'>
+        <div className='max-w-4xl mx-auto relative'>
           <div className='mb-8'>
-            <Image src='/hero.webp' alt='The Simpsons API Hero' width={400} height={200} className='mx-auto mb-6' />
+            <Image
+              src='/hero.webp'
+              alt='The Simpsons API Hero'
+              width={400}
+              height={200}
+              className='mx-auto mb-6'
+              priority
+            />
           </div>
           <h1 className='text-5xl font-bold text-gray-900 mb-6 sr-only'>The Simpsons API</h1>
           <p className='text-lg sm:text-xl text-gray-900 mb-8 max-w-2xl mx-auto text-shadow-md'>
@@ -23,10 +28,12 @@ export function Hero() {
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
             <Button size='lg' asChild>
-              <Link href='#docs'>Get Started</Link>
+              <Link href='#docs' data-umami-event='Hero get started'>
+                Get Started
+              </Link>
             </Button>
             <Button size='lg' variant='outline' asChild>
-              <Link href={baseUrl} target='_blank'>
+              <Link href={baseUrl} target='_blank' data-umami-event='Hero view api'>
                 View API <ExternalLink className='ml-2 h-4 w-4' />
               </Link>
             </Button>

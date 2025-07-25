@@ -12,13 +12,18 @@ export function Footer() {
           </div>
           <p className='text-gray-600 mb-6'>The RESTful API for The Simpsons universe</p>
           <div className='flex justify-center gap-x-6 gap-y-2 flex-wrap'>
-            <Link href='https://thesimpsonsapi.com/api' target='_blank' className='text-gray-700 hover:text-gray-400'>
+            <Link
+              href='https://thesimpsonsapi.com/api'
+              target='_blank'
+              className='text-gray-700 hover:text-gray-400'
+              data-umami-event='Footer api endpoint'
+            >
               API Endpoint
             </Link>
-            <Link href='#docs' className='text-gray-700 hover:text-gray-400'>
+            <Link href='#docs' className='text-gray-700 hover:text-gray-400' data-umami-event='Footer documentation'>
               Documentation
             </Link>
-            <Link href='#example' className='text-gray-700 hover:text-gray-400'>
+            <Link href='#example' className='text-gray-700 hover:text-gray-400' data-umami-event='Footer example'>
               Example
             </Link>
             <Link
@@ -26,6 +31,7 @@ export function Footer() {
               target='_blank'
               rel='noopener noreferrer'
               className='text-gray-700 hover:text-gray-400 flex items-center gap-2'
+              data-umami-event='Footer status'
             >
               <Circle className='h-3 w-3 fill-green-500 text-green-500' />
               Status
@@ -38,6 +44,7 @@ export function Footer() {
                 href='https://github.com/Facug03'
                 target='_blank'
                 className='text-gray-700 hover:text-gray-400 font-semibold underline'
+                data-umami-event='Footer github'
               >
                 FacuG03
               </Link>
@@ -50,6 +57,7 @@ export function Footer() {
                   target='_blank'
                   rel='noopener noreferrer'
                   className='text-gray-600 hover:text-gray-400 underline'
+                  data-umami-event='Footer fandom'
                 >
                   The Simpsons Wiki
                 </Link>{' '}
