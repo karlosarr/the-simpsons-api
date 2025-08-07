@@ -9,12 +9,14 @@ RESTful API for The Simpsons data. Built with NestJS, Prisma, and PostgreSQL.
 ## 🚀 Quick Start
 
 ```bash
-# 1. Install & start
+# 1. Clone project
 git clone https://github.com/Facug03/the-simpsons-api.git
 cd the-simpsons-api
+
+# 2. Install & start api
 npm install
-docker compose up -d
-npx prisma migrate reset --force
+cd api && docker compose up -d
+cd api && npx prisma migrate reset --force
 npm run dev
 ```
 
