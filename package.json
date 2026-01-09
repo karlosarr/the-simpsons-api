@@ -6,8 +6,8 @@
   "type": "module",
   "keywords": ["typescript"],
   "engines": {
-    "node": ">=22.x",
-    "npm": ">=11.x"
+    "node": ">=20.x",
+    "npm": ">=10.x"
   },
   "scripts": {
     "api:lock": "cd api && npm i --package-lock-only --workspaces=false",
