@@ -38,5 +38,6 @@ export default async (req: any, res: any) => {
   const instance = app.getHttpAdapter().getInstance()
 
   await instance.ready()
+  console.log('Request URL:', req.url)
   instance.server.emit('request', req, res)
 }
