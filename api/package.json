@@ -11,7 +11,7 @@
   },
   "main": "dist/main.js",
   "scripts": {
-    "build": "npx prisma generate && npm run build:clean && nest build --path tsconfig.prod.json",
+    "build": "npx prisma generate && npm run build:clean && nest build --path tsconfig.prod.json && tsc-alias -p tsconfig.prod.json",
     "start": "node dist/main.js",
     "dev": "nest start --watch --debug=0.0.0.0:9229",
     "test": "rimraf coverage .nyc_output && concurrently 'npm:test:unit' 'npm:test:e2e' && npm run calculate-global-test-coverage",
@@ -61,6 +61,7 @@
     "supertest": "7.0.0",
     "ts-loader": "9.5.1",
     "ts-node": "10.9.2",
+    "tsc-alias": "^1.8.16",
     "tsconfig-paths": "4.2.0",
     "tsx": "4.19.0",
     "typescript": "5.5.4",
