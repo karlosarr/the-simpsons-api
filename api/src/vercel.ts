@@ -29,6 +29,7 @@ async function bootstrap() {
     })
 
     await app.init()
+    console.log(app.getHttpAdapter().getInstance().printRoutes())
   }
   return app
 }
