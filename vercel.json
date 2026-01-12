@@ -8,6 +8,13 @@
   ],
   "routes": [
     {
+      "src": "/",
+      "status": 308,
+      "headers": {
+        "Location": "/api"
+      }
+    },
+    {
       "src": "/(.*)",
       "dest": "/api/dist/vercel.js"
     }
