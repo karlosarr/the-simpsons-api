@@ -2,6 +2,7 @@ import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify'
 import helmet from '@fastify/helmet'
+import awsLambdaFastify from '@fastify/aws-lambda'
 import { AppModule } from './app.module.js'
 
 let app: NestFastifyApplication
@@ -37,8 +38,7 @@ async function bootstrap() {
 export default async (req: any, res: any) => {
   const app = await bootstrap()
   const instance = app.getHttpAdapter().getInstance()
-
   await instance.ready()
-  console.log('Request URL:', req.url)
-  instance.server.emit('request', req, res)
+  const proxy = awsLambdaFastify(instance)
+  return proxy(req, res)
 }
