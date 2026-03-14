@@ -1,0 +1,53 @@
+name: Build API
+
+on:
+  push:
+    branches:
+      - main
+      - "claude/**"
+    paths:
+      - "api/**"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "api/**"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_ENV: production
+
+jobs:
+  build:
+    name: TypeScript Compilation
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+          cache-dependency-path: api/package-lock.json
+
+      - name: Install dependencies
+        working-directory: api
+        run: npm install
+
+      - name: Generate Prisma client
+        working-directory: api
+        run: npx prisma generate
+
+      - name: Build (TypeScript → JS)
+        working-directory: api
+        run: npm run build
+
+      - name: Verify dist output exists
+        working-directory: api
+        run: test -f dist/main.js && echo "Build artifact present" || (echo "dist/main.js missing" && exit 1)

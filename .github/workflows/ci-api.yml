@@ -1,6 +1,11 @@
 name: Build and Test API
 
 on:
+  push:
+    branches:
+      - "claude/**"
+    paths:
+      - "api/**"
   pull_request:
     branches:
       - main
@@ -20,25 +25,64 @@ env:
   API_KEY: random-key
 
 jobs:
-  test:
+  unit-test:
+    name: Unit Tests
     runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Use Node.js 20
+      - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: "npm"
+          cache-dependency-path: api/package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm install -w=api
-          cd api && npx prisma generate && cd ..
-          npm run build:api
+        working-directory: api
+        run: npm install
 
-      - name: Run tests
-        run: npm run test:api
+      - name: Generate Prisma client
+        working-directory: api
+        run: npx prisma generate
+
+      - name: Run unit tests
+        working-directory: api
+        run: npm run test:unit
+
+  e2e-test:
+    name: E2E Tests
+    runs-on: ubuntu-22.04
+    needs: unit-test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+          cache-dependency-path: api/package-lock.json
+
+      - name: Install dependencies
+        working-directory: api
+        run: npm install
+
+      - name: Generate Prisma client
+        working-directory: api
+        run: npx prisma generate
+
+      - name: Build API
+        working-directory: api
+        run: npm run build
+
+      - name: Run E2E tests
+        working-directory: api
+        run: npm run test:e2e
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL_DEV }}
    
